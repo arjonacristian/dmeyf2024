@@ -3,6 +3,7 @@
 
 # Se cambio CA=>MachineLearning / DR=>UVA / FeHist=>1lag / CN=>D=1.75-R=1
 #           undersampling=DEFAULT / ratioavg - ratiomax=TRUE
+#           TS=>param_local$final_train$undersampling <- 0.50
 
 # limpio la memoria
 rm(list = ls(all.names = TRUE)) # remove all objects
@@ -277,13 +278,15 @@ TS_strategy_base9 <- function( pinputexps )
 
   param_local$future <- c(202109)
 
-  param_local$final_train$undersampling <- 0.10
+  param_local$final_train$undersampling <- 0.50
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
   param_local$final_train$training <- c(
     202107, 202106, 202105, 202104, 202103, 202102, 202101, 
     202012, 202011, 202010, 202009, 202008, 202007, 
     # 202006  Excluyo por variables rotas
-    202005, 202004, 202003, 202002, 202001,
+    #202005, EXCLUYO POR PANDEMIA
+    #202004, EXCLUYO POR PANDEMIA
+    202003, 202002, 202001,
     201912, 201911,
     # 201910 Excluyo por variables rotas
     201909, 201908, 201907, 201906,
@@ -299,7 +302,8 @@ TS_strategy_base9 <- function( pinputexps )
     202105, 202104, 202103, 202102, 202101, 
     202012, 202011, 202010, 202009, 202008, 202007, 
     # 202006  Excluyo por variables rotas
-    202005, 202004, 202003, 202002, 202001,
+    #202005, 202004, EXCLUYO POR PANDEMIA
+    202003, 202002, 202001,
     201912, 201911,
     # 201910 Excluyo por variables rotas
     201909, 201908, 201907, 201906,
